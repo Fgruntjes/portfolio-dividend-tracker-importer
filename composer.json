@@ -1,7 +1,14 @@
 {
-    "type": "project",
-    "license": "proprietary",
-    "minimum-stability": "stable",
+    "name": "freekgruntjes/portfolio-dividend-tracker-importer",
+    "description": "Importer for usee with the Portfolio Dividend Tracker",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Freek Gruntjes",
+            "email": "freek@gruntjes.net"
+        }
+    ],
+    "minimum-stability": "alpha",
     "prefer-stable": true,
     "require": {
         "php": ">=7.2.5",
