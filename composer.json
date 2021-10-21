@@ -1,6 +1,6 @@
 {
     "name": "freekgruntjes/portfolio-dividend-tracker-importer",
-    "description": "Importer for usee with the Portfolio Dividend Tracker",
+    "description": "Importer for use with the Portfolio Dividend Tracker",
     "license": "MIT",
     "authors": [
         {
@@ -11,17 +11,26 @@
     "minimum-stability": "alpha",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.2.5",
+        "php": ">=8.0.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "sensio/framework-extra-bundle": "^6.2",
         "symfony/console": "5.3.*",
         "symfony/dotenv": "5.3.*",
         "symfony/flex": "^1.3.1",
+        "symfony/form": "5.3.*",
         "symfony/framework-bundle": "5.3.*",
+        "symfony/mime": "5.3.*",
         "symfony/runtime": "5.3.*",
-        "symfony/yaml": "5.3.*"
+        "symfony/twig-bundle": "5.3.*",
+        "symfony/validator": "5.3.*",
+        "symfony/webpack-encore-bundle": "^1.12",
+        "symfony/yaml": "5.3.*",
+        "twig/extra-bundle": "^2.12|^3.0",
+        "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
+        "symfony/maker-bundle": "^1.34"
     },
     "config": {
         "optimize-autoloader": true,
@@ -32,7 +41,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src/App/"
         }
     },
     "autoload-dev": {
@@ -46,6 +55,7 @@
         "symfony/polyfill-php72": "*"
     },
     "scripts": {
+        "start": "symfony start",
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"

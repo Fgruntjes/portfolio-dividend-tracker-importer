@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Portfolio dividend tracker importer - {% block title %}{% endblock %}</title>
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        <main>
+            <div class="px-4 py-5 my-5 text-center">
+                <h1 class="display-5 fw-bold">{{ block('title') }}</h1>
+                <div class="col-lg-6 mx-auto">
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+        </main>
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </body>
+</html>
