@@ -32,10 +32,12 @@ class ExportUploadForm extends AbstractType
                     'mimeTypes' => [
                         'text/csv',
                         'text/xml',
+                        'text/plain',
                         'application/csv',
                         'application/xml',
                     ],
-                    'mimeTypesMessage' => 'Please upload a valid XML or CSV file',
+
+                    'mimeTypesMessage' => 'Please upload a valid XML, CSV or OFX file',
                 ])
             ],
         ]);

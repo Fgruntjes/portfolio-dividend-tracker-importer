@@ -14,6 +14,7 @@
         "php": ">=8.0.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "nerijunior/ofxparser": "dev-expose-xml-node",
         "sensio/framework-extra-bundle": "^6.2",
         "symfony/console": "5.3.*",
         "symfony/dotenv": "5.3.*",
@@ -29,7 +30,14 @@
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
     },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/Fgruntjes/ofxparser.git"
+        }
+    ],
     "require-dev": {
+        "phpunit/phpunit": "^9",
         "symfony/maker-bundle": "^1.34"
     },
     "config": {
@@ -55,7 +63,7 @@
         "symfony/polyfill-php72": "*"
     },
     "scripts": {
-        "start": "symfony start",
+        "start": "symfony server:start",
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"

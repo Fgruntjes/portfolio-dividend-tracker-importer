@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/vendor/nerijunior/ofxparser/vendor/nerijunior/ofxparser.iml" filepath="$PROJECT_DIR$/vendor/nerijunior/ofxparser/vendor/nerijunior/ofxparser.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/portfolio-dividend-tracker-importer.iml" filepath="$PROJECT_DIR$/.idea/portfolio-dividend-tracker-importer.iml" />
     </modules>
   </component>

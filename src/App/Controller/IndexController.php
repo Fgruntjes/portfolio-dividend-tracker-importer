@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -36,7 +37,19 @@ class IndexController extends AbstractController
             try {
                 $broker = $this->brokerRegistry->get($upload->getBroker());
                 $mappedExport = $broker->convertExport($file);
-                return new BinaryFileResponse($mappedExport->getStream());
+
+                $response = new StreamedResponse();
+                $response->setCallback(function() use ($mappedExport) {
+                    $stream = $mappedExport->getStream();
+                    while (!$stream->eof()) {
+                        echo $stream->fread( 8192);
+                        flush();
+                    }
+                });
+                $response->headers->set('Content-Type', 'text/csv');
+                $response->headers->set('Content-Disposition', 'attachment; filename="Account.csv"');
+
+                return $response;
             } catch (BrokerDoesNotExistException $e) {
                 throw new NotFoundHttpException($e->getMessage());
             }
