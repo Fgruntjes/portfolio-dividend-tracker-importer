@@ -75,7 +75,8 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "heroku-postbuild" : "node_modules/.bin/encore production"
     },
     "conflict": {
         "symfony/symfony": "*"
