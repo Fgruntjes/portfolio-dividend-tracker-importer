@@ -55,11 +55,11 @@ class InteractiveBrokersConverter implements ExportConverterInterface
             $transaction->settlementDate ?? $transaction->tradeDate,
             $transaction->securityId,
             $transaction->currency,
-            Utils::createAmountFromStr($transaction->units),
-            Utils::createAmountFromStr($transaction->unitPrice),
-            Utils::createAmountFromStr($transaction->xmlNode->COMISSION),
-            $transaction->currencyRate,
-            Utils::createAmountFromStr($transaction->xmlNode->TAXES),
+            (float) $transaction->units,
+            (float) $transaction->unitPrice,
+            (float) (string) $transaction->xmlNode->INVBUY->COMMISSION,
+            (float) $transaction->currencyRate,
+            (float) (string) $transaction->xmlNode->INVBUY->TAXES,
         );
     }
 
@@ -70,11 +70,11 @@ class InteractiveBrokersConverter implements ExportConverterInterface
             $transaction->settlementDate ?? $transaction->tradeDate,
             $transaction->securityId,
             $transaction->currency,
-            Utils::createAmountFromStr($transaction->units),
-            Utils::createAmountFromStr($transaction->unitPrice),
-            Utils::createAmountFromStr($transaction->xmlNode->COMISSION),
-            $transaction->currencyRate,
-            Utils::createAmountFromStr($transaction->xmlNode->TAXES),
+            (float) $transaction->units,
+            (float) $transaction->unitPrice,
+            (float) (string) $transaction->xmlNode->INVBUY->COMMISSION,
+            (float) $transaction->currencyRate,
+            (float) (string) $transaction->xmlNode->INVBUY->TAXES,
         );
     }
 
@@ -84,23 +84,24 @@ class InteractiveBrokersConverter implements ExportConverterInterface
             $export->addDeposit(
                 $transaction->date,
                 $transaction->currency,
-                Utils::createAmountFromStr($transaction->amount),
-                $transaction->currencyRate,
+                (float) $transaction->amount,
+                (float) $transaction->currencyRate,
             );
         } elseif ($transaction->type === 'WIT') { // TODO: The transaction type for withdraw is guessed
             $export->addWithdrawal(
                 $transaction->date,
                 $transaction->currency,
-                Utils::createAmountFromStr($transaction->amount),
-                $transaction->currencyRate,
+                (float) $transaction->amount,
+                (float) $transaction->currencyRate,
             );
         } elseif ($transaction->type === 'INT') {
             $export->addBrokerCost(
                 $transaction->date,
                 $transaction->currency,
-                Utils::createAmountFromStr($transaction->amount),
-                'Interest',
-                $transaction->currencyRate,
+                (float) $transaction->amount,
+                // For now must be 'Flatex Interest', since PDT matches based on description
+                'Flatex Interest',
+                (float) $transaction->currencyRate,
             );
         }
     }
@@ -115,8 +116,8 @@ class InteractiveBrokersConverter implements ExportConverterInterface
             $transaction->settlementDate ?? $transaction->tradeDate,
             $transaction->securityId,
             $transaction->currency,
-            Utils::createAmountFromStr($transaction->total),
-            Utils::createAmountFromStr($transaction->currencyRate),
+            (float) $transaction->total,
+            (float) $transaction->currencyRate,
         );
     }
 }
